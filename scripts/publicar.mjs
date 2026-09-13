@@ -25,6 +25,9 @@ correr("npm run build", { env });
 // Sin .nojekyll, GitHub Pages ignora las carpetas que empiezan con "_" (como _next).
 fs.writeFileSync(path.join("out", ".nojekyll"), "");
 
+// La rama gh-pages solo tiene el sitio compilado: Vercel no tiene que intentar desplegarla.
+fs.copyFileSync("vercel.json", path.join("out", "vercel.json"));
+
 const origen = leer("git rev-parse --short HEAD");
 const git = (comando) => correr(`git ${comando}`, { cwd: "out" });
 git("init -q -b gh-pages");

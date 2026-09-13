@@ -110,6 +110,10 @@ Cómo está armado:
   nombre que pide el navegador, para que la navegación interna no dé 404 en Pages.
 - `public/.nojekyll` evita que Pages ignore la carpeta `_next`.
 
+**Vercel:** el repo también está conectado a Vercel (https://monopatines-riocuarto.vercel.app), que
+despliega solo cada push a `main` en la raíz, sin prefijo. La rama `gh-pages` está excluida en
+[`vercel.json`](vercel.json): solo tiene el sitio compilado y Vercel no puede construirla.
+
 **Con dominio propio:** configurarlo en *Settings → Pages* y en `scripts/publicar.mjs` dejar
 `NEXT_PUBLIC_BASE_PATH` vacío y poner el dominio en `NEXT_PUBLIC_SITE_URL`.
 
