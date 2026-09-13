@@ -139,11 +139,11 @@ export default function HomePage() {
         </Reveal>
         <Reveal variante="cortina" className="relative z-10 flex flex-col justify-center bg-fuego px-8 py-14 text-noche md:-mx-12 md:[clip-path:polygon(9%_0,100%_0,91%_100%,0_100%)] md:px-[14%]">
           <h2 className="titulo text-3xl text-white sm:text-4xl">
-            Te puede fallar.
+            El monopatín te puede fallar.
             <span className="acento block text-noche">Nosotros no.</span>
           </h2>
           <p className="mt-5 text-sm leading-relaxed font-medium text-noche/85">
-            Como todo lo eléctrico, un monopatín puede fallar. Vender monopatines lo puede hacer cualquiera; lo que
+            Vender monopatines lo puede hacer cualquiera; lo que
             casi nadie te da es asesoramiento después de la compra y un servicio técnico que responda. Nuestra atención
             no termina cuando te vas del local.
           </p>
