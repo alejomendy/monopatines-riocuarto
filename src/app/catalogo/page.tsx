@@ -24,7 +24,7 @@ export default function CatalogoPage() {
           <div>
             <p className="eyebrow entra text-fuego">Catálogo</p>
             <h1 className="titulo entra mt-3 text-5xl text-white sm:text-7xl" style={{ animationDelay: "80ms" }}>
-              Elegí tu <span className="barrido inline-block text-fuego" style={{ animationDelay: "380ms" }}>equipo</span>
+              Elegí tu equipo
             </h1>
             <p className="entra mt-4 max-w-xl text-base text-white/80 sm:text-lg" style={{ animationDelay: "160ms" }}>
               {negocio.garantia} {"//"} {negocio.cuotas}. Consultá precio y disponibilidad por WhatsApp.

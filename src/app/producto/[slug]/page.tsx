@@ -148,7 +148,7 @@ export default async function ProductoPage({ params }: PageProps<"/producto/[slu
           <div>
             <p className="eyebrow text-fuego-ink">Especificaciones</p>
             <h2 className="titulo mt-3 text-4xl">
-              Ficha <span className="acento text-fuego-ink">técnica</span>
+              Ficha técnica
             </h2>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-tinta/60">
               {producto.fichaAConfirmar
@@ -172,7 +172,7 @@ export default async function ProductoPage({ params }: PageProps<"/producto/[slu
           <div className="text-center">
             <p className="eyebrow text-fuego">{nombreCategoria(producto.categoria)}</p>
             <h2 className="titulo mt-3 text-4xl text-white">
-              También te puede <span className="acento text-fuego">interesar</span>
+              También te puede interesar
             </h2>
           </div>
           <div className="mx-auto mt-14 max-w-7xl px-3 sm:px-5 lg:px-8">

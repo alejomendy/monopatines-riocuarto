@@ -164,7 +164,7 @@ export function Taller() {
             <form ref={orden} onSubmit={enviar} className="scroll-mt-24 bg-white text-tinta shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]">
               <div className="flex items-center justify-between bg-noche px-6 py-4 text-white">
                 <p className="text-sm font-extrabold tracking-[0.16em] uppercase">
-                  Orden <span className="text-fuego">de taller</span>
+                  Orden de taller
                 </p>
                 <span className="flex gap-1" aria-hidden>
                   <span className="h-4 w-1.5 -skew-x-[24deg] bg-fuego" />

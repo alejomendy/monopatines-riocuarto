@@ -48,12 +48,12 @@ const preguntas = [
   },
 ];
 
-function Encabezado({ eyebrow, blanco, naranja, bajada, claro }: { eyebrow: string; blanco: string; naranja: string; bajada?: string; claro?: boolean }) {
+function Encabezado({ eyebrow, titulo, bajada, claro }: { eyebrow: string; titulo: string; bajada?: string; claro?: boolean }) {
   return (
     <Reveal className="text-center">
       <p className={`eyebrow ${claro ? "text-fuego-ink" : "text-fuego"}`}>{eyebrow}</p>
       <h2 className={`titulo mt-3 text-4xl sm:text-5xl ${claro ? "text-tinta" : "text-white"}`}>
-        {blanco} <span className={`acento ${claro ? "text-fuego-ink" : "text-fuego"}`}>{naranja}</span>
+        {titulo}
       </h2>
       {bajada && <p className={`mx-auto mt-4 max-w-xl text-base leading-relaxed ${claro ? "text-tinta/70" : "text-white/75"}`}>{bajada}</p>}
     </Reveal>
@@ -88,8 +88,7 @@ export default function HomePage() {
       <section className="fondo-grafito relative overflow-hidden py-20 lg:py-24">
         <Encabezado
           eyebrow="Nuevos ingresos"
-          blanco="Monopatines"
-          naranja="destacados"
+          titulo="Monopatines destacados"
           bajada="Elegí tu equipo. Te asesoramos, tiene garantía y lo atendemos en nuestro taller."
         />
         <div className="mx-auto mt-14 max-w-7xl px-3 sm:px-5 lg:px-8">
@@ -105,7 +104,7 @@ export default function HomePage() {
       {/* ================= POR USO ================= */}
       <section className="bg-niebla text-tinta">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
-          <Encabezado eyebrow="Encontrá el tuyo" blanco="¿Para qué lo" naranja="vas a usar?" claro />
+          <Encabezado eyebrow="Encontrá el tuyo" titulo="¿Para qué lo vas a usar?" claro />
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {usos.map((u, i) => {
               const cantidad = productos.filter((p) => p.uso?.includes(u.id)).length;
@@ -161,8 +160,7 @@ export default function HomePage() {
       <section className="fondo-grafito relative overflow-hidden py-20 lg:py-24">
         <Encabezado
           eyebrow="Repuestos y accesorios"
-          blanco="Todo para tu"
-          naranja="monopatín"
+          titulo="Todo para tu monopatín"
           bajada="Cubiertas, frenos, baterías y accesorios. Te confirmamos compatibilidad con tu equipo."
         />
         <div className="mx-auto mt-14 max-w-7xl px-3 sm:px-5 lg:px-8">
@@ -180,7 +178,7 @@ export default function HomePage() {
 
       {/* ================= COMUNIDAD ================= */}
       <section className="bg-noche py-20 lg:py-24">
-        <Encabezado eyebrow={`@${negocio.instagram}`} blanco={`${negocio.seguidores}`} naranja="riders" bajada="Ya andan con nosotros. Seguinos para ver ingresos, promos y el día a día del taller." />
+        <Encabezado eyebrow={`@${negocio.instagram}`} titulo={`${negocio.seguidores} riders`} bajada="Ya andan con nosotros. Seguinos para ver ingresos, promos y el día a día del taller." />
         <div className="mx-auto mt-12 grid max-w-7xl grid-cols-2 gap-2 px-5 sm:gap-3 lg:grid-cols-4 lg:px-8">
           {[
             { src: "/instagram/rural.webp", alt: "Recorriendo la Rural en monopatín" },
@@ -216,7 +214,7 @@ export default function HomePage() {
           <Reveal>
             <p className="eyebrow text-fuego-ink">Preguntas frecuentes</p>
             <h2 className="titulo mt-3 text-4xl sm:text-5xl">
-              Antes de <span className="acento block text-fuego-ink">comprar</span>
+              Antes de <span className="block">comprar</span>
             </h2>
             <p className="mt-5 max-w-sm text-tinta/65">¿No encontrás tu respuesta? Escribinos y te asesoramos sin compromiso.</p>
           </Reveal>
@@ -244,7 +242,7 @@ export default function HomePage() {
           <p className="eyebrow text-noche/70">Contacto</p>
           <h2 className="titulo mt-3 text-4xl text-white sm:text-6xl">
             Ya sabés,
-            <span className="acento block text-noche">vení a Monopatines Río Cuarto</span>
+            <span className="block">vení a Monopatines Río Cuarto</span>
           </h2>
           <p className="mt-5 max-w-md font-medium text-noche/80">
             {negocio.direccion ?? `${negocio.ciudad}, ${negocio.provincia}`}

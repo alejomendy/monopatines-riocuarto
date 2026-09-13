@@ -88,22 +88,6 @@ export function Hero() {
         style={{ clipPath: "polygon(0 0, 100% 0, 80% 100%, 0 100%)" }}
       />
 
-      {/* ---- Móvil: producto ---- */}
-      <div className="relative h-[22rem] overflow-hidden pt-18 sm:h-[27rem] lg:hidden">
-        <span className="franja entra-franja left-[22%] w-[26%]" />
-        <span className="franja entra-franja left-[56%] w-[4%] bg-white!" style={{ animationDelay: "120ms" }} />
-        <span className="franja entra-franja left-[64%] w-[12%]" style={{ animationDelay: "220ms" }} />
-        <Image
-          key={p.recorte}
-          src={p.recorte}
-          alt={`${p.marca} ${p.modelo}`}
-          fill
-          sizes="(min-width: 640px) 70vw, 100vw"
-          priority
-          className={`${entrada} object-contain px-8 pt-22 pb-5`}
-        />
-      </div>
-
       {/* ---- Escritorio: producto ---- */}
       <div className="absolute top-[calc(4.5rem+3%)] right-[1.5%] bottom-[36%] hidden w-[33%] lg:block xl:right-0">
         <Image
@@ -119,8 +103,11 @@ export function Hero() {
 
       <div className="relative mx-auto h-full max-w-7xl px-5 lg:px-8">
         {/* Título abajo a la izquierda. */}
-        <div className="relative z-10 pt-6 pb-10 lg:absolute lg:bottom-[9%] lg:left-8 lg:max-w-[40rem] lg:p-0">
-          <p className="eyebrow entra text-fuego">Venta // Servicio técnico // Repuestos</p>
+        <div className="relative z-10 pt-28 pb-10 sm:pt-32 lg:absolute lg:bottom-[9%] lg:left-8 lg:max-w-[40rem] lg:p-0">
+          <p className="eyebrow entra text-fuego">
+            Venta {"//"} <span className="hidden sm:inline">Servicio técnico</span>
+            <span className="sm:hidden">Taller</span> {"//"} Repuestos
+          </p>
           <h1
             className="titulo entra mt-4 text-[clamp(2rem,10.4vw,3.1rem)] text-white sm:text-7xl lg:text-[4.3rem] xl:text-[4.8rem]"
             style={{ animationDelay: "90ms" }}
@@ -151,12 +138,31 @@ export function Hero() {
         </div>
       </div>
 
+      {/* ---- Móvil y tablet: el monopatín apoyado sobre su panel ---- */}
+      <div className="relative z-20 -mb-7 h-[19rem] sm:h-[26rem] lg:hidden">
+        <div className="absolute inset-x-0 top-0 bottom-7 overflow-hidden">
+          <span className="franja entra-franja left-[18%] w-[24%]" />
+          <span className="franja entra-franja left-[50%] w-[4%] bg-white!" style={{ animationDelay: "120ms" }} />
+          <span className="franja entra-franja left-[60%] w-[13%]" style={{ animationDelay: "220ms" }} />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-noche/70 to-transparent" />
+        </div>
+        <Image
+          key={p.recorte}
+          src={p.recorte}
+          alt={`${p.marca} ${p.modelo}`}
+          fill
+          sizes="(min-width: 640px) 60vw, 90vw"
+          priority
+          className={`${entrada} object-contain object-bottom px-10 pt-2 sm:px-24`}
+        />
+      </div>
+
       {/* Panel blanco del modelo, abajo a la derecha. */}
       <div
         className="entra relative z-10 lg:absolute lg:right-0 lg:bottom-[4%] lg:w-[36%] xl:w-[33%]"
         style={{ animationDelay: "380ms" }}
       >
-        <div className="relative overflow-hidden bg-white py-6 pr-5 pl-5 text-tinta lg:[clip-path:polygon(11%_0,100%_0,100%_100%,0_100%)] lg:pr-10 lg:pl-[15%]">
+        <div className="relative overflow-hidden bg-white pt-11 pb-6 pr-5 pl-5 text-tinta lg:pt-6 lg:[clip-path:polygon(11%_0,100%_0,100%_100%,0_100%)] lg:pr-10 lg:pl-[15%]">
           <div className="flex items-start justify-between gap-4">
             <div key={p.slug} className={entrada} style={{ animationDuration: "0.6s" }}>
               <p className="text-[0.65rem] font-bold tracking-[0.2em] text-tinta/45 uppercase">{p.etiqueta}</p>
