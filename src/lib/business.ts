@@ -13,7 +13,9 @@ export const negocio = {
   direccion: null as string | null,
   horarios: null as string | null,
   whatsappVentas: "5493584122669",
-  whatsappTaller: "5493884322271",
+  // Provisorio: el taller recibe en el mismo número que ventas. El de la bio
+  // de Instagram para reparaciones es 5493884322271.
+  whatsappTaller: "5493584122669",
   instagram: "monopatinesriocuarto",
   seguidores: "17,8 mil",
   garantia: "Hasta 2 años de garantía",
