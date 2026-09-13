@@ -28,6 +28,7 @@ fs.writeFileSync(path.join("out", ".nojekyll"), "");
 const origen = leer("git rev-parse --short HEAD");
 const git = (comando) => correr(`git ${comando}`, { cwd: "out" });
 git("init -q -b gh-pages");
+git("config core.autocrlf false");
 git("add -A");
 git(`-c user.name="${leer("git config user.name")}" -c user.email="${leer("git config user.email")}" commit -q -m "Publicar ${origen}"`);
 git(`push -q -f ${remoto} gh-pages`);
