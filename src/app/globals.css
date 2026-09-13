@@ -1,0 +1,368 @@
+@import "tailwindcss";
+
+@theme {
+  /* Carbón de la referencia: negro con grises de taller. */
+  --color-noche: #0c0c0e;
+  --color-carbon: #151518;
+  --color-carbon-2: #1e1e22;
+  --color-grafito: #2b2b30;
+  --color-linea: #34343a;
+  --color-humo: #b6b6be;
+  --color-niebla: #ececec;
+  --color-niebla-2: #dcdcdc;
+  --color-tinta: #141416;
+
+  /* Naranja de los reels de la marca: franjas, botones y acentos. */
+  --color-fuego: #ff5a1f;
+  --color-fuego-hover: #ff7440;
+  --color-fuego-ink: #c2410c;
+
+  --color-whatsapp: #25d366;
+
+  --font-sans: var(--font-kanit), "Kanit", system-ui, sans-serif;
+  --font-script: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+/* Las animaciones de entrada desplazan elementos: nunca debe aparecer scroll horizontal. */
+html,
+body {
+  overflow-x: clip;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-noche);
+  color: #fff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Títulos en mayúscula, en itálica pesada, con una palabra en naranja ("CustomNaked"). */
+.titulo {
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+/* Nombres de modelo y cifras con el mismo carácter que los títulos. */
+.cifra {
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* "Río Cuarto" del logo. Solo para la marca. */
+.script {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Fondo de las secciones de producto: gris que cae a negro. */
+.fondo-grafito {
+  background-image: linear-gradient(180deg, #34343a 0%, #1c1c20 45%, #0f0f11 100%);
+}
+
+/* Franja diagonal naranja, la firma visual de la referencia. */
+.franja {
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  background: var(--color-fuego);
+  transform: skewX(-24deg);
+  pointer-events: none;
+}
+
+/* Cortes en diagonal. */
+.corte-izq {
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+}
+.corte-der {
+  clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%);
+}
+.corte-paralelo {
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+}
+.esquina {
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+}
+
+/* "ō" con el macrón dibujado aparte (ver src/components/texto.tsx). */
+.o-macron {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+.o-macron::after {
+  content: "";
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  top: 0.2em;
+  height: 0.07em;
+  border-radius: 0.02em;
+  background: currentColor;
+}
+.titulo .o-macron::after,
+.cifra .o-macron::after,
+.italic .o-macron::after {
+  left: 24%;
+  right: 6%;
+}
+.uppercase .o-macron::after,
+.eyebrow .o-macron::after {
+  top: -0.1em;
+}
+
+/* Separador "//" de la navegación de la referencia. */
+.barras::before {
+  content: "//";
+  margin-right: 0.9rem;
+  color: rgb(255 255 255 / 0.25);
+  font-weight: 400;
+}
+
+/* --- Movimiento -------------------------------------------------------- */
+
+:root {
+  --ease-salida: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-suave: cubic-bezier(0.65, 0, 0.35, 1);
+  interpolate-size: allow-keywords;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes entra-derecha {
+  from {
+    opacity: 0;
+    transform: translateX(70px) scale(0.97);
+  }
+}
+
+@keyframes entra-izquierda {
+  from {
+    opacity: 0;
+    transform: translateX(-70px) scale(0.97);
+  }
+}
+
+@keyframes entra-franja {
+  from {
+    opacity: 0;
+    translate: -120px 0;
+  }
+}
+
+@keyframes barrido {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes progreso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pulso {
+  0% {
+    box-shadow: 0 0 0 0 rgb(37 211 102 / 0.55);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 18px rgb(37 211 102 / 0);
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.entra {
+  animation: fade-up 0.8s var(--ease-salida) both;
+}
+.entra-derecha {
+  animation: entra-derecha 0.9s var(--ease-salida) both;
+}
+.entra-izquierda {
+  animation: entra-izquierda 0.9s var(--ease-salida) both;
+}
+.entra-franja {
+  animation: entra-franja 1.1s var(--ease-salida) both;
+}
+.barrido {
+  animation: barrido 0.9s var(--ease-suave) both;
+}
+
+/* Aparición al hacer scroll, con variantes. */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s var(--ease-salida),
+    clip-path 1s var(--ease-suave);
+}
+.reveal[data-variante="izquierda"] {
+  transform: translateX(-40px);
+}
+.reveal[data-variante="derecha"] {
+  transform: translateX(40px);
+}
+.reveal[data-variante="escala"] {
+  transform: scale(0.94);
+}
+.reveal[data-variante="cortina"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 100% 0 0);
+}
+.reveal[data-visible] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* La palabra naranja de los títulos entra con un barrido. */
+.acento {
+  display: inline-block;
+}
+.reveal .acento {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s var(--ease-suave) 0.25s;
+}
+.reveal[data-visible] .acento {
+  clip-path: inset(-10% -4% -10% 0);
+}
+
+/* Fotos que se acomodan despacio al aparecer. */
+.reveal .ken-burns {
+  transform: scale(1.12);
+  transition: transform 2.4s var(--ease-salida);
+}
+.reveal[data-visible] .ken-burns {
+  transform: scale(1);
+}
+
+/* Brillo que cruza el botón al pasar el mouse. */
+.brillo {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.brillo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-suave);
+}
+.brillo:hover::after {
+  transform: translateX(120%);
+}
+
+/* Preguntas: se abren con altura animada donde el navegador lo soporta. */
+details.suave::details-content {
+  height: 0;
+  overflow: clip;
+  transition:
+    height 0.45s var(--ease-salida),
+    content-visibility 0.45s allow-discrete;
+}
+details.suave[open]::details-content {
+  height: auto;
+}
+
+/* Transiciones entre páginas (View Transitions). */
+::view-transition-group(.morph) {
+  animation-duration: 520ms;
+  animation-timing-function: var(--ease-salida);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+}
+@keyframes via-blur {
+  30% {
+    filter: blur(2px);
+  }
+}
+::view-transition-old(.pagina) {
+  animation: 180ms ease-in both vt-fade reverse;
+}
+::view-transition-new(.pagina) {
+  animation:
+    260ms ease-out 120ms both vt-fade,
+    520ms var(--ease-salida) both vt-sube;
+}
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes vt-sube {
+  from {
+    translate: 0 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+  .reveal,
+  .reveal[data-variante],
+  .reveal .acento,
+  .reveal .ken-burns {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
