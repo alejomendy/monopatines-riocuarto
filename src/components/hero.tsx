@@ -7,6 +7,7 @@ import { useCallback, useState } from "react";
 import { ArrowIcon, WrenchIcon } from "@/components/icons";
 import { negocio } from "@/lib/business";
 import { useSinMovimiento } from "@/lib/use-sin-movimiento";
+import { PruebaSocial } from "@/components/prueba-social";
 import { Texto } from "@/components/texto";
 
 const destacados = [
@@ -102,6 +103,11 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto h-full max-w-7xl px-5 lg:px-8">
+        {/* Escritorio: opiniones de Google arriba a la izquierda, en el espacio libre antes de las franjas. */}
+        <PruebaSocial
+          className="entra absolute top-[calc(4.5rem+6%)] left-8 z-10 hidden w-[17rem] lg:flex xl:w-[19rem]"
+        />
+
         {/* Título abajo a la izquierda. */}
         <div className="relative z-10 pt-28 pb-10 sm:pt-32 lg:absolute lg:bottom-[9%] lg:left-8 lg:max-w-[40rem] lg:p-0">
           <p className="eyebrow entra text-fuego">
@@ -135,6 +141,9 @@ export function Hero() {
               <WrenchIcon className="size-4 transition-transform duration-500 group-hover:-rotate-45" /> Llevar al taller
             </Link>
           </div>
+
+          {/* Móvil y tablet: opiniones debajo de los botones. */}
+          <PruebaSocial className="entra mt-8 sm:max-w-sm lg:hidden" />
         </div>
       </div>
 

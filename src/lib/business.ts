@@ -20,6 +20,19 @@ export const negocio = {
   cuotas: "6 cuotas sin interés",
 };
 
+/**
+ * Calificación de la ficha de Google Maps, copiada a mano (revisada el
+ * 15/09/2026). Las reseñas son solo estrellas, sin texto: cuando alguien deje
+ * una opinión escrita se puede sumar acá. Actualizar al cambiar la ficha.
+ */
+export const google = {
+  calificacion: 4.5,
+  cantidad: 4,
+  url: "https://www.google.com/maps/search/?api=1&query=Monopatines%20Rio%20Cuarto&query_place_id=ChIJFRkz1IT_zZUReyPz0MWnPCw",
+  // Solo el nombre de pila de quienes pusieron 5 estrellas.
+  cincoEstrellas: ["Vanesa", "Diego", "Santiago"],
+};
+
 export function formatearTelefono(numero: string) {
   // 549 358 412-2669 → 358 412-2669
   const local = numero.replace(/^549/, "");

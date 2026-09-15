@@ -69,6 +69,8 @@ Todo en CSS y React, sin librerías de animación. Con `prefers-reduced-motion` 
   de publicaciones de distribuidores y la página lo aclara. No tiene foto de producto.
 - **ewōl MINI, PRO, MAX y R, repuestos y accesorios:** fichas y fotos de ewol.ar. **No aparecen
   en las publicaciones recientes del local**: se sumaron para completar el catálogo.
+- **Google Maps:** calificación del hero (4,5 con 4 reseñas, revisada el 15/09/2026). Las reseñas
+  son solo estrellas, sin texto. Se actualiza a mano en `google` de [`src/lib/business.ts`](src/lib/business.ts).
 - **Cascos y líquido sellador:** se ven en los reels del taller, sin foto de producto.
 
 ## Antes de publicar
